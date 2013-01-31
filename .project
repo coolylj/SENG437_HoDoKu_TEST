@@ -3,6 +3,7 @@
 	<name>SENG437_HoDoKu_TEST</name>
 	<comment></comment>
 	<projects>
+		<project>HoDuKu</project>
 	</projects>
 	<buildSpec>
 	</buildSpec>
