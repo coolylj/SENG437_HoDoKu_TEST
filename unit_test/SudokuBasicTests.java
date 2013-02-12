@@ -14,7 +14,21 @@ public class SudokuBasicTests {
 	Sudoku2 s;
 	
 	String clear = ".................................................................................";
-	String sudokuTest = "010000406407600095600170020004001680008006300056800000070025001540008207209000540";
+	String testString1 = ".1....4.64.76...956..17..2...4..168...8..63...568......7..25..154...82.72.9...54.";
+	String testString2 = "010000406407600095600170020004001680008006300056800000070025001540008207209000540";
+	String testString3 =".---------.---------.---------.\n" +
+						"| .  1  . | .  .  . | 4  .  6 |\n" +
+						"| 4  .  7 | 6  .  . | .  9  5 |\n" +
+						"| 6  .  . | 1  7  . | .  2  . |\n" +
+						":---------+---------+---------:\n" +
+						"| .  .  4 | .  .  1 | 6  8  . |\n" +
+						"| .  .  8 | .  .  6 | 3  .  . |\n" +
+						"| .  5  6 | 8  .  . | .  .  . |\n" +
+						":---------+---------+---------:\n" +
+						"| .  7  . | .  2  5 | .  .  1 |\n" +
+						"| 5  4  . | .  .  8 | 2  .  7 |\n" +
+						"| 2  .  9 | .  .  . | 5  4  . |\n" +
+						"\'---------\'---------\'---------\'\n" ;	
 	
 	public SudokuBasicTests()
 	{
@@ -23,13 +37,32 @@ public class SudokuBasicTests {
 		//System.out.println(s.getSudoku(ClipboardMode.VALUES_ONLY_FORMATTED));
 	}
 	
-	//@Test
-	//public void ValidGenerationTest() {
-		
-		//generator.getNumberOfSolutions(s);
-		//System.out.println(s.getSudoku(ClipboardMode.VALUES_ONLY));
-		//assertEquals("Sudoku failed to generate.",true, s.checkSudoku());
-	//}
+	@Test
+	public void testSetSudokuType1()
+	{
+		System.out.println("setSudoku Test 1");
+		s.setSudoku(testString1);
+		assertEquals(testString1, s.getSudoku(ClipboardMode.VALUES_ONLY));
+		assertEquals(testString3, s.getSudoku(ClipboardMode.VALUES_ONLY_FORMATTED));
+	}
+	
+	@Test
+	public void testSetSudokuType2()
+	{
+		System.out.println("setSudoku Test 2");
+		s.setSudoku(testString2);
+		assertEquals(testString1, s.getSudoku(ClipboardMode.VALUES_ONLY));
+		assertEquals(testString3, s.getSudoku(ClipboardMode.VALUES_ONLY_FORMATTED));
+	}
+	
+	@Test
+	public void testSetSudokuType3()
+	{
+		System.out.println("setSudoku Test 3");
+		s.setSudoku(testString3);
+		assertEquals(testString1, s.getSudoku(ClipboardMode.VALUES_ONLY));
+		assertEquals(testString3, s.getSudoku(ClipboardMode.VALUES_ONLY_FORMATTED));
+	}
 	
 	/*
 	 * Test of clearSudoku method, of class Sudoku2
@@ -38,7 +71,7 @@ public class SudokuBasicTests {
 	@Test
 	public void testClearSudoku()
 	{
-		System.out.println("clearSudoku");
+		System.out.println("clearSudoku Test");
 		s.clearSudoku();
 		assertEquals(clear, s.getSudoku(ClipboardMode.VALUES_ONLY));
 	}
@@ -50,7 +83,7 @@ public class SudokuBasicTests {
 	@Test
 	public void testGetIndex()
 	{
-		System.out.println("getIndex");
+		System.out.println("getIndex Test");
 		assertEquals(38, s.getIndex(4, 2));
 		assertNotSame(48, s.getIndex(4, 2));
 		assertEquals(80, s.getIndex(8, 8));
@@ -62,9 +95,9 @@ public class SudokuBasicTests {
 	@Test
 	public void testGetValue()
 	{
-		System.out.println("getValue");
-		s.setSudoku(sudokuTest);
-		System.out.println(s.getSudoku(ClipboardMode.VALUES_ONLY_FORMATTED));
+		System.out.println("getValue Test");
+		s.setSudoku(testString2);
+		//System.out.println(s.getSudoku(ClipboardMode.VALUES_ONLY_FORMATTED));
 		assertEquals(1, s.getValue(1));
 		assertEquals(7, s.getValue(1,2));
 	}
