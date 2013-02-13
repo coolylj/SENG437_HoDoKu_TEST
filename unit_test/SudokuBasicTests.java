@@ -16,7 +16,22 @@ public class SudokuBasicTests {
 	String clear = ".................................................................................";
 	String testString1 = ".1....4.64.76...956..17..2...4..168...8..63...568......7..25..154...82.72.9...54.";
 	String testString2 = "010000406407600095600170020004001680008006300056800000070025001540008207209000540";
-	String testString3 =".---------.---------.---------.\n" +
+	String testString3 =  "*-----------*\n" +
+						  "|.1.|...|4.6|\n" +
+						  "|4.7|6..|.95|\n" +
+						  "|6..|17.|.2.|\n" +
+						  "|---+---+---|\n" +
+						  "|..4|..1|68.|\n" +
+						  "|..8|..6|3..|\n" +
+						  "|.56|8..|...|\n" +
+						  "|---+---+---|\n" +
+						  "|.7.|.25|..1|\n" +
+						  "|54.|..8|2.7|\n" +
+						  "|2.9|...|54.|\n" +
+						  "*-----------*\n";
+
+	
+	String expOutput =  ".---------.---------.---------.\n" +
 						"| .  1  . | .  .  . | 4  .  6 |\n" +
 						"| 4  .  7 | 6  .  . | .  9  5 |\n" +
 						"| 6  .  . | 1  7  . | .  2  . |\n" +
@@ -28,40 +43,65 @@ public class SudokuBasicTests {
 						"| .  7  . | .  2  5 | .  .  1 |\n" +
 						"| 5  4  . | .  .  8 | 2  .  7 |\n" +
 						"| 2  .  9 | .  .  . | 5  4  . |\n" +
-						"\'---------\'---------\'---------\'\n" ;	
+						"\'---------\'---------\'---------\'\n" ;
 	
 	public SudokuBasicTests()
 	{
 		generator = SudokuGeneratorFactory.getInstance();
 		s = generator.generateSudoku(false);
-		//System.out.println(s.getSudoku(ClipboardMode.VALUES_ONLY_FORMATTED));
 	}
 	
+	/*
+	 * Test of setSudoku method, of class Sudoku2
+	 * Input Format: ...1.32.4..1.
+	 */
 	@Test
 	public void testSetSudokuType1()
 	{
 		System.out.println("setSudoku Test 1");
 		s.setSudoku(testString1);
 		assertEquals(testString1, s.getSudoku(ClipboardMode.VALUES_ONLY));
-		assertEquals(testString3, s.getSudoku(ClipboardMode.VALUES_ONLY_FORMATTED));
+		assertEquals(expOutput, s.getSudoku(ClipboardMode.VALUES_ONLY_FORMATTED));
 	}
-	
+
+	/*
+	 * Test of setSudoku method, of class Sudoku2
+	 * Input Format: 0001032040010
+	 */
 	@Test
 	public void testSetSudokuType2()
 	{
 		System.out.println("setSudoku Test 2");
 		s.setSudoku(testString2);
 		assertEquals(testString1, s.getSudoku(ClipboardMode.VALUES_ONLY));
-		assertEquals(testString3, s.getSudoku(ClipboardMode.VALUES_ONLY_FORMATTED));
+		assertEquals(expOutput, s.getSudoku(ClipboardMode.VALUES_ONLY_FORMATTED));
 	}
 	
+	/*
+	 * Test of setSudoku method, of class Sudoku2
+	 * Input Format: 
+	 * 	  "*-----------*\n" +
+		  "|.1.|...|4.6|\n" +
+		  "|4.7|6..|.95|\n" +
+		  "|6..|17.|.2.|\n" +
+		  "|---+---+---|\n" +
+		  "|..4|..1|68.|\n" +
+		  "|..8|..6|3..|\n" +
+		  "|.56|8..|...|\n" +
+		  "|---+---+---|\n" +
+		  "|.7.|.25|..1|\n" +
+		  "|54.|..8|2.7|\n" +
+		  "|2.9|...|54.|\n" +
+		  "*-----------*\n" +
+	 */
 	@Test
 	public void testSetSudokuType3()
 	{
 		System.out.println("setSudoku Test 3");
 		s.setSudoku(testString3);
+		//System.out.println(s.getSudoku(ClipboardMode.VALUES_ONLY));
 		assertEquals(testString1, s.getSudoku(ClipboardMode.VALUES_ONLY));
-		assertEquals(testString3, s.getSudoku(ClipboardMode.VALUES_ONLY_FORMATTED));
+		assertEquals(expOutput, s.getSudoku(ClipboardMode.VALUES_ONLY_FORMATTED));
 	}
 	
 	/*
@@ -111,7 +151,5 @@ public class SudokuBasicTests {
 		s.resetSudoku();
 		System.out.println(s.getSudoku(ClipboardMode.VALUES_ONLY_FORMATTED));
 	}*/
-	
-	
 
 }
