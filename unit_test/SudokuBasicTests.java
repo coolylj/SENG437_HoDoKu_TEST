@@ -6,7 +6,7 @@ import sudoku.*;
 import generator.*;
 
 import org.junit.Test;
-
+//Basic test
 
 public class SudokuBasicTests {
 

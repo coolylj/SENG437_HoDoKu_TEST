@@ -417,7 +417,8 @@ public class WingSolver extends AbstractSolver {
         SudokuSolver solver = SudokuSolverFactory.getDefaultSolverInstance();
         SolutionStep step = solver.getHint(sudoku, false);
         System.out.println(step);
-        System.out.println(sudoku.getSudoku(ClipboardMode.LIBRARY, step));
+        //System.out.println(sudoku.getSudoku(ClipboardMode.LIBRARY, step));
+        System.out.println(sudoku.getSudoku(ClipboardMode.VALUES_ONLY_FORMATTED));
         System.exit(0);
     }
 }
