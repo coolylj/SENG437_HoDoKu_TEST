@@ -141,15 +141,4 @@ public class SudokuBasicTests {
 		assertEquals(1, s.getValue(1));
 		assertEquals(7, s.getValue(1,2));
 	}
-	
-	/*@Test
-	public void testResetSudoku()
-	{
-		System.out.println("resetSudoku");
-		s.setSudoku(sudokuTest);
-		System.out.println(s.getSudoku(ClipboardMode.VALUES_ONLY));
-		s.resetSudoku();
-		System.out.println(s.getSudoku(ClipboardMode.VALUES_ONLY_FORMATTED));
-	}*/
-
 }
