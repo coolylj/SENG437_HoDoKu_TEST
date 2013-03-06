@@ -177,4 +177,59 @@ public class SudokuGeneratorTests {
 		assertEquals("Sudoku generated was invalid.",true, s.checkSudoku());
 	}
 
+	
+	/*
+	 * The following are white box tests that were added in order to increase code coverage.
+	 */
+	
+	@Test
+	public void Generate_WithoutGUI_Test(){
+		BackgroundGenerator b = new BackgroundGenerator();
+		DifficultyLevel d = new DifficultyLevel(DifficultyType.EXTREME, 10000, "Test", Color.BLACK, Color.WHITE);
+		String puzzle = b.generate(d, GameMode.PLAYING);
+		assertNotNull("Sudoku failed to generate.", puzzle);
+	}
+	
+	@Test
+	public void Generate_GameModeLearning(){
+		BackgroundGenerator b = new BackgroundGenerator();
+		DifficultyLevel d = new DifficultyLevel(DifficultyType.EXTREME, 10000, "Test", Color.BLACK, Color.WHITE);
+		String puzzle = b.generate(d, GameMode.LEARNING);
+		assertNotNull("Sudoku failed to generate.", puzzle);
+	}
+	
+	@Test
+	public void Generate_GameModePractice(){
+		BackgroundGenerator b = new BackgroundGenerator();
+		DifficultyLevel d = new DifficultyLevel(DifficultyType.EXTREME, 10000, "Test", Color.BLACK, Color.WHITE);
+		String puzzle = b.generate(d, GameMode.PRACTISING);
+		assertNotNull("Sudoku failed to generate.", puzzle);
+	}
+	
+	@Test
+	public void Generate_WithPatternNotSymmetric(){
+		SudokuGenerator g = SudokuGeneratorFactory.getDefaultGeneratorInstance();
+		boolean[] pattern = {true, false, false, true, true, true, false, true, false, false};
+		Sudoku2 s = g.generateSudoku(false, pattern);
+		assertEquals("Invalid sudoku generated", true, g.validSolution(s));
+	}
+
+	@Test
+	public void Generate_WithPatternSymmetric(){
+		SudokuGenerator g = SudokuGeneratorFactory.getDefaultGeneratorInstance();
+		boolean[] pattern = {true, false, true, true, true, false, false, false, true, false, true, false, false};
+		Sudoku2 s = g.generateSudoku(true, pattern);
+		assertEquals("Invalid sudoku generated", true, g.validSolution(s));
+	}
+	
+	@Test
+	public void Generate_RunOtherMethods(){
+		SudokuGenerator g = SudokuGeneratorFactory.getDefaultGeneratorInstance();
+		boolean[] pattern = {true, false, false, true, true, false, false};
+		Sudoku2 s = g.generateSudoku(true, pattern);
+		
+		g.getNumberOfSolutions(s);
+		g.solve(s.getSudoku(ClipboardMode.VALUES_ONLY));
+	}
 }
+
