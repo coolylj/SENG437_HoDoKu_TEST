@@ -109,7 +109,7 @@ public class SudokuGeneratorTests {
 		assertEquals("Sudoku generated was invalid.",true, s.checkSudoku());
 	}
 	
-	@Test
+	@Test(timeout = 30000)
 	public void GenerateHard1000_Test(){
 		DifficultyLevel d = new DifficultyLevel(DifficultyType.HARD, 1000, "Test", Color.BLACK, Color.WHITE);
 		BackgroundGenerator b = new BackgroundGenerator();
@@ -140,7 +140,7 @@ public class SudokuGeneratorTests {
 		assertEquals("Sudoku generated was invalid.",true, s.checkSudoku());
 	}
 	
-	@Test
+	@Test(timeout = 30000)
 	public void GenerateUnfair1000_Test(){
 		DifficultyLevel d = new DifficultyLevel(DifficultyType.UNFAIR, 1000, "Test", Color.BLACK, Color.WHITE);
 		BackgroundGenerator b = new BackgroundGenerator();
@@ -168,7 +168,7 @@ public class SudokuGeneratorTests {
 		assertEquals("Sudoku generated was invalid.",true, s.checkSudoku());
 	}
 	
-	@Test
+	@Test(timeout = 30000)
 	public void GenerateExtreme1000_Test(){
 		DifficultyLevel d = new DifficultyLevel(DifficultyType.EXTREME, 1000, "Test", Color.BLACK, Color.WHITE);
 		BackgroundGenerator b = new BackgroundGenerator();
