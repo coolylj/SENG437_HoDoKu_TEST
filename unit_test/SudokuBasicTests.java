@@ -51,6 +51,11 @@ public class SudokuBasicTests {
 		s = generator.generateSudoku(false);
 	}
 	
+	@Test
+	public void newInstanceTest()
+	{
+		s = new Sudoku2();
+	}
 	/*
 	 * Test of setSudoku method, of class Sudoku2
 	 * Input Format: ...1.32.4..1.
