@@ -28,6 +28,7 @@ public class GiveUpTest extends GiveUpSolver{
 		assertEquals(s1, sStep);
 	}
 	
+	//not done yet
 	@Test
 	public void giveUpStepTest()
 	{

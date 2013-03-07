@@ -18,6 +18,7 @@ public class BruteForceTest extends BruteForceSolver{
 	
 	public BruteForceTest(){
 		super(new SudokuStepFinder());
+		
 		String g1 = new String("..5......4....2.1...2.548...246....1...92....9.7...3.6............7..4...8..3.79.");
 		testSudoku = new Sudoku2();
 		testSudoku.setSudoku(g1);
@@ -30,6 +31,8 @@ public class BruteForceTest extends BruteForceSolver{
 	
 	@Test
 	public void Test_GetStep_WrongType() {
+		
+		BruteForceSolver b = new BruteForceSolver(s);
 		sStep = this.getStep(sType);
 		assertNull("Code did not run properly.", sStep);
 	}
