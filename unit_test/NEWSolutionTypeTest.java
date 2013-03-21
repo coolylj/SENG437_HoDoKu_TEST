@@ -10,10 +10,36 @@ import sudoku.SolutionType;
  */
 public class NEWSolutionTypeTest {
 	
-	private SolutionType sType;
+	SolutionType sType;
 	
+	@SuppressWarnings("null")
+	@Test
+	public void solutionTypeCall1()
+	{
+		SolutionType s = SolutionType.FULL_HOUSE;
+		s.setStepName("Full_House");
 
+		assertEquals("Full_House", s.getStepName());
+	}
 	
+	@Test
+	public void solutionTypeCall2()
+	{
+		SolutionType s = SolutionType.FULL_HOUSE;
+		s.setLibraryType("0000");
+
+		assertEquals("0000", s.getLibraryType());
+	}
+	
+	@Test
+	public void solutionTypeCall3()
+	{
+		SolutionType s = SolutionType.FULL_HOUSE;
+		s.setArgName("fh");
+
+		assertEquals("fh", s.getArgName());
+	}
+
 
 	/*************************************************************************
 	 * PREVIOUS
@@ -858,6 +884,17 @@ public class NEWSolutionTypeTest {
 	}
 	
 	@Test
+	public void compareTestNonFish2()
+	{
+		SolutionType s1 = SolutionType.FULL_HOUSE;
+		SolutionType s2 = SolutionType.HIDDEN_SINGLE;
+		
+		System.out.println("hello " +s2.compare(s1));
+		
+		assertTrue(s2.compare(s1) == 200);
+	}
+	
+	@Test
 	public void compareTestSecondNonFish()
 	{
 		SolutionType s1 = SolutionType.X_WING;
@@ -867,12 +904,58 @@ public class NEWSolutionTypeTest {
 	}
 	
 	@Test
+	public void compareTestSecondNonFish3()
+	{
+		SolutionType s1 = SolutionType.X_WING;
+		SolutionType s2 = SolutionType.X_WING;
+		
+		assertTrue(s1.compare(s2) == 0);
+	}
+	
+	@Test
+	public void compareTestSecondNonFish2()
+	{
+		SolutionType s2 = SolutionType.X_WING;
+		SolutionType s1 = SolutionType.HIDDEN_SINGLE;
+		
+		assertTrue(s1.compare(s2) < 0);
+	}
+	
+	@Test
+	public void compareTestSecondNonFish4()
+	{
+		SolutionType s2 = SolutionType.X_WING;
+		SolutionType s1 = SolutionType.HIDDEN_SINGLE;
+		
+		assertTrue(s1.compare(s2) == -1900);
+	}
+	
+	@Test
 	public void compareTestFishDifferCategory()
 	{
 		SolutionType s1 = SolutionType.X_WING;
 		SolutionType s2 = SolutionType.FINNED_X_WING;
 		
 		assertTrue(s2.compare(s1) > 0);
+	}
+	
+	@Test
+	public void compareTestFishDifferCategory2()
+	{
+		SolutionType s2 = SolutionType.X_WING;
+		SolutionType s1 = SolutionType.FINNED_X_WING;
+		
+		assertTrue(s2.compare(s1) < 0);
+	}
+	
+	@Test
+	public void compareTestFishDifferCategory3()
+	{
+		SolutionType s1 = SolutionType.X_WING;
+		SolutionType s2 = SolutionType.FINNED_X_WING;
+		System.out.println("hello 12" +s2.compare(s1));
+		
+		assertTrue(s2.compare(s1) == 1);
 	}
 	
 	@Test
@@ -936,7 +1019,7 @@ public class NEWSolutionTypeTest {
 	{
 		sType = SolutionType.NAKED_PAIR;
 		
-		assertTrue(sType.getNonSinglesAnz() >= 3);
+		assertTrue(sType.getNonSinglesAnz() == 108);
 	}
 	
 	@SuppressWarnings("static-access")
@@ -947,4 +1030,15 @@ public class NEWSolutionTypeTest {
 		
 		assertTrue(sType.getNonSSTSAnz() > 0);
 	}
+	
+	@SuppressWarnings("static-access")
+	@Test
+	public void getNonSSTSAnzTest2()
+	{
+		sType = SolutionType.SKYSCRAPER;
+		
+		assertTrue(sType.getNonSSTSAnz() ==  91);
+	}
+	
+	
 }
