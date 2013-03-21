@@ -76,4 +76,25 @@ public class BruteForceTest extends BruteForceSolver{
 		boolean success = this.doStep(sStep);
 		assertEquals("Code did not run properly.", false, success);
 	}
+	
+	
+	// TESTS ADDED TO INCREASE MUTATION COVERAGE START HERE
+	
+	@Test
+	public void Test_DoStep_CheckIndex(){
+		sType = SolutionType.BRUTE_FORCE;
+		sStep = this.getStep(sType);
+		boolean success = this.doStep(sStep);
+		assertNotNull("Code did not run properly.", sStep.getIndices().get(0));
+	}
+	
+	@Test
+	public void Test_DoStep_CheckCells(){
+		
+		sType = SolutionType.BRUTE_FORCE;
+		sStep = this.getStep(sType);
+		boolean success = this.doStep(sStep);
+		assertEquals("Code did not run properly.", sStep.getValues().get(0).intValue(), finder.getSudoku().getValue(sStep.getIndices().get(0)));
+	}
+	
 }
