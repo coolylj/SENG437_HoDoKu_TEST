@@ -37,22 +37,25 @@ public class Integration_AbstractSolverTest {
     }
     
     @Test
-    public void test2_withType1(){	
-    	ss = solvers[1].getStep(SolutionType.GIVE_UP);
+    public void test2_withType2(){
+    	ss = solvers[0].getStep(SolutionType.BRUTE_FORCE);
     	assertNotNull(ss);
-    	assertTrue(solvers[1].doStep(ss));
+    	assertTrue(solvers[0].doStep(ss));
+    	assertFalse(solvers[1].doStep(ss));
     }
     
     @Test
     public void test3_withType2(){
-    	ss = solvers[0].getStep(SolutionType.BRUTE_FORCE);
-    	assertNotNull(ss);
-    	assertTrue(solvers[0].doStep(ss));
-    }
-    
-    @Test
-    public void test4_withType2(){
     	ss = solvers[1].getStep(SolutionType.BRUTE_FORCE);
     	assertNull(ss);
-    }  
+    }    
+    @Test
+    public void test4_withType1(){	
+    	ss = solvers[1].getStep(SolutionType.GIVE_UP);
+    	assertNotNull(ss);
+    	assertTrue(solvers[1].doStep(ss));
+    	assertFalse(solvers[0].doStep(ss));
+    }
+    
+ 
 }
